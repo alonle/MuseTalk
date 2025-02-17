@@ -14,21 +14,8 @@ from tqdm import tqdm
 
 # initialize the mmpose model
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print("[DEBUG] Device:", device)
-
-current_dir = os.path.dirname(os.path.abspath(__file__))
-print("[DEBUG] Current directory:", current_dir)
-
-project_root = os.path.abspath(os.path.join(current_dir, '..', '..'))
-print("[DEBUG] Project root:", project_root)
-
-config_file = os.path.join(current_dir, 'dwpose/rtmpose-l_8xb32-270e_coco-ubody-wholebody-384x288.py')
-print("[DEBUG] Config file path:", config_file)
-print("[DEBUG] Config file exists:", os.path.exists(config_file))
-
-checkpoint_file = os.path.join(project_root, 'models/dwpose/dw-ll_ucoco_384.pth')
-print("[DEBUG] Checkpoint file path:", checkpoint_file)
-print("[DEBUG] Checkpoint file exists:", os.path.exists(checkpoint_file))
+config_file = './dwpose/rtmpose-l_8xb32-270e_coco-ubody-wholebody-384x288.py'
+checkpoint_file = '../models/dwpose/dw-ll_ucoco_384.pth'
 model = init_model(config_file, checkpoint_file, device=device)
 
 # initialize the face detection model
